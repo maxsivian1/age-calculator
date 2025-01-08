@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGE CALCULATOR</title>
+    <style>
+        :root {
+            --color1: cyan;
+            --color2: rgba(0, 255, 255, 0.726);
+            --color3: rgba(0, 255, 255, 0.315);
+            --color4: red;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        nav{
+            margin-bottom: 20px;
+            background-color: var(--color3);
+            color: var(--color1);
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        nav span{
+            display: block;
+            width: fit-content;
+            margin: auto; 
+            /* background-color: blue; */
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .age {
+            /* border: 1px solid rgb(255, 255, 255); */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+        }  
+
+        #age-input {
+            height: 40px;
+            font-size: 18px;
+            background-color: black;
+            color: var(--color1);
+            border-color: var(--color1);
+            border-radius: 5px;
+            padding: 0px 10px;
+        }  
+
+        #age-input::-webkit-datetime-edit-fields-wrapper {
+            /* color: #eb0a0a;  */
+            /* background-color: aqua; */
+            /* font-weight: bold; */
+        }
+
+        #age-input::-webkit-inner-spin-button,
+        #age-input::-webkit-calendar-picker-indicator {
+            filter: invert(100%);
+            /* color: brown;  */
+            /* background-color: chartreuse; */
+        }
+
+
+        #calculate {
+            border: none;
+            padding: 5px 20px;
+            font-size: 20px;
+            background-color: var(--color1);
+            color: rgb(0, 0, 0);
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        #calculate:hover {
+            background-color: var(--color2);
+        }
+
+        #calculate:active {
+            background-color: var(--color3);
+        }
+
+        .age-info {
+            border: 1px solid white;
+            border-radius: 10px;
+            padding: 5px 30px;
+
+            display: flex;
+            /* justify-content: space-around; */
+            gap: 20px;
+        }
+
+        .age-years-container,
+        .age-months-container,
+        .age-days-container {
+            /* border: 1px solid rgb(26, 226, 8); */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .age-details {
+            border: 1px solid white;
+            border-radius: 15px;
+            /* height: 100px; */
+            padding: 20px;
+            font-size: 30px;
+            width: 500px;
+        }
+
+        .total-years-container,
+        .total-months-container,
+        .total-weeks-container,
+        .total-days-container,
+        .total-hours-container,
+        .total-minutes-container,
+        .total-seconds-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .final-value {
+            border: 1px solid var(--color1);
+            border-radius: 15px;
+            padding: 5px;
+            font-size: 50px;
+            color: var(--color1);
+        }
+
+
+
+        @media screen and (max-width: 590px) {
+            .age-details {
+                /* min-width: 300px; */
+                width: auto;
+            }
+
+            .total-years-container,
+            .total-months-container,
+            .total-weeks-container,
+            .total-days-container,
+            .total-hours-container,
+            .total-minutes-container,
+            .total-seconds-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <span>AGE CALCULATOR</span>
+    </nav>
+
+    <div class="age">
+
+        <input type="datetime-local" id="age-input" value="2002-08-04T00:00">
+        <button id="calculate">CALCULATE AGE</button>
+
+        <div class="age-info">
+            <div class="age-years-container">
+                <div class="age-years">YEARS</div>
+                <div class="age-years-value"></div>
+            </div>
+            <div class="age-months-container">
+                <div class="age-months">MONTHS</div>
+                <div class="age-months-value"></div>
+            </div>
+            <div class="age-days-container">
+                <div class="age-days">DAYS</div>
+                <div class="age-days-value"></div>
+            </div>
+        </div>
+
+        <div class="age-details">
+            <div class="total-years-container">
+                <div class="total-years">Total Years: </div>
+                <div class="total-years-answer"></div>
+            </div>
+
+            <div class="total-months-container">
+                <div class="total-months">Total Months: </div>
+                <div class="total-months-answer"></div>
+            </div>
+
+            <div class="total-weeks-container">
+                <div class="total-weeks">Total Weeks: </div>
+                <div class="total-weeks-answer"></div>
+            </div>
+
+            <div class="total-days-container">
+                <div class="total-days">Total Days: </div>
+                <div class="total-days-answer"></div>
+            </div>
+
+            <div class="total-hours-container">
+                <div class="total-hours">Total Hours: </div>
+                <div class="total-hours-answer"></div>
+            </div>
+
+            <div class="total-minutes-container">
+                <div class="total-minutes">Total Minutes: </div>
+                <div class="total-minutes-answer"></div>
+            </div>
+
+            <div class="total-seconds-container">
+                <div class="total-seconds">Total Seconds: </div>
+                <div class="total-seconds-answer"></div>
+            </div>
+        </div>
+
+        <div class="final-value">
+            
+        </div>
+
+    </div>
+
+    </div>
+
+    <script>
+        let calculateBtn = document.querySelector("#calculate");
+        calculateBtn.addEventListener("click", calculateAge);
+        let intervalID;
+
+        function calculateAge() {
+            let value = document.querySelector("#age-input").value;
+            if (!value) {
+                console.log("Please enter a valid date and time.");
+                return;
+            }
+            console.log(value);
+
+            let birthDate = new Date(value);
+
+
+
+            if (intervalID) {
+                clearInterval(intervalID);
+            }
+            intervalID = setInterval(() => {
+
+                let currentDate = new Date();
+
+                let seconds = Math.floor((currentDate.getTime() - birthDate.getTime()) / 1000);
+                let minutes = Math.floor(seconds / 60);
+                let hours = Math.floor(minutes / 60);
+                let days = Math.floor(hours / 24);
+                let weeks = Math.floor(days / 7);
+                // console.log(seconds, minutes, hours, days, weeks);
+
+                let years = currentDate.getFullYear() - birthDate.getFullYear();
+                let months = years * 12 + (currentDate.getMonth() - birthDate.getMonth());
+                years = Math.floor(months / 12)  
+                // console.log(currentDate.getMonth() - birthDate.getMonth());
+
+                document.querySelector(".total-years-answer").textContent = years;
+                document.querySelector(".total-months-answer").textContent = months;
+                document.querySelector(".total-weeks-answer").textContent = weeks;
+                document.querySelector(".total-days-answer").textContent = days;
+                document.querySelector(".total-hours-answer").textContent = hours;
+                document.querySelector(".total-minutes-answer").textContent = minutes;
+                document.querySelector(".total-seconds-answer").textContent = seconds;
+
+                document.querySelector(".age-years-value").innerText = years
+                document.querySelector(".age-months-value").innerText = Math.floor((days % 365) / 30)
+                document.querySelector(".age-days-value").innerText = (days % 365) % 30
+
+                document.querySelector(".final-value").innerText = (seconds / (60 * 60 * 24 * 365)).toFixed(9) + "  YEARS";
+            }, 1000);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
