@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGE CALCULATOR</title>
+    <link rel="stylesheet" href="test.css">
     <style>
-        :root {
+        :root { 
             --color1: cyan;
             --color2: rgba(0, 255, 255, 0.726);
             --color3: rgba(0, 255, 255, 0.315);
@@ -221,9 +222,9 @@
             </div>
         </div>
 
-        <div class="final-value">
+        <div class="final-value" hidden>
             
-        </div>
+        </div> 
 
     </div>
 
@@ -233,8 +234,10 @@
         let calculateBtn = document.querySelector("#calculate");
         calculateBtn.addEventListener("click", calculateAge);
         let intervalID;
+        let finalvalueBox = document.getElementsByClassName("final-value")[0]
 
         function calculateAge() {
+  
             let value = document.querySelector("#age-input").value;
             if (!value) {
                 console.log("Please enter a valid date and time.");
@@ -267,7 +270,7 @@
 
                 document.querySelector(".total-years-answer").textContent = years;
                 document.querySelector(".total-months-answer").textContent = months;
-                document.querySelector(".total-weeks-answer").textContent = weeks;
+                document.querySelector(".total-weeks-answer").textContent = weeks; 
                 document.querySelector(".total-days-answer").textContent = days;
                 document.querySelector(".total-hours-answer").textContent = hours;
                 document.querySelector(".total-minutes-answer").textContent = minutes;
@@ -279,12 +282,14 @@
 
                 document.querySelector(".final-value").innerText = (seconds / (60 * 60 * 24 * 365)).toFixed(9) + "  YEARS";
             }, 1000);
+
+            finalvalueBox.removeAttribute("hidden")
+            finalvalueBox.innerText = "LOADING..."
         }
 
-
-
-
     </script>
+
+    <script src="test.js"></script>
 </body>
 
 </html>
